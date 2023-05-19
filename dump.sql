@@ -145,12 +145,31 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 INSERT INTO public.tokens VALUES (1, '2023-05-19 12:20:43.446501', 3, 'b1e7321c-df12-4ac2-832b-ace07fd957f5');
+INSERT INTO public.tokens VALUES (2, '2023-05-19 12:43:16.016697', 3, 'c81d9d55-ce6d-430e-ac68-1609943201dc');
+INSERT INTO public.tokens VALUES (3, '2023-05-19 12:44:48.494001', 3, '610125ae-a33f-4e22-b418-abb2a6fa641e');
+INSERT INTO public.tokens VALUES (4, '2023-05-19 12:45:26.032699', 3, '316c8523-5e60-448e-8d49-330f63e0d456');
 
 
 --
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.urls VALUES (2, 'ZhxXRLjM9lrmp5iszU_U7', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 13:54:20.945422');
+INSERT INTO public.urls VALUES (3, 'xVjnfhdLe2BAc05k-3CC2', 'res.sendStatus(200)', 1, NULL, '2023-05-19 13:54:57.932095');
+INSERT INTO public.urls VALUES (4, '59FUCNOmEyz11HeLsFTE6', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:13:54.599926');
+INSERT INTO public.urls VALUES (5, 'iIKtyqUiyCeq4MaLVFnnY', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:14:29.018229');
+INSERT INTO public.urls VALUES (6, '7XeuaD2vdCwWJta6qlCtF', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:14:43.301738');
+INSERT INTO public.urls VALUES (7, 'Ak9nzJ5HM0DaSMzIWeGMR', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:14:47.841538');
+INSERT INTO public.urls VALUES (8, 'r6lGwm9bSd-9yLqf6s1uy', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:15:26.594442');
+INSERT INTO public.urls VALUES (9, '9VNOleES8MAgE8iMyeCRI', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:16:35.697668');
+INSERT INTO public.urls VALUES (10, 'PtMF3hrJevQHffP5ghs2O', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:16:58.14195');
+INSERT INTO public.urls VALUES (11, 'bc8Nirw1Vumt8qhB4eUi1', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:17:10.236268');
+INSERT INTO public.urls VALUES (12, 'Xr1tMOyTRsKLOj0BKkDsn', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:17:16.895454');
+INSERT INTO public.urls VALUES (13, '-X8vwh8OHFwVOdNXnPKeW', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:17:44.433402');
+INSERT INTO public.urls VALUES (14, 'S6dpeZF5idm7S6vjK5p4q', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, NULL, '2023-05-19 14:20:15.352112');
+INSERT INTO public.urls VALUES (16, 'SHgaGemV', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 1, 3, '2023-05-19 14:44:05.3143');
+INSERT INTO public.urls VALUES (18, 'jotD0Ieo', 'SOUTH', 1, 3, '2023-05-19 15:26:02.722422');
+INSERT INTO public.urls VALUES (17, 'GYl0euDQ', 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg', 2, 3, '2023-05-19 14:49:23.774945');
 
 
 --
@@ -166,14 +185,14 @@ INSERT INTO public.users VALUES (3, 'gustavo', 'gustavo@driven.com.br', '$2b$10$
 -- Name: tokens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.tokens_id_seq', 1, true);
+SELECT pg_catalog.setval('public.tokens_id_seq', 4, true);
 
 
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
+SELECT pg_catalog.setval('public.urls_id_seq', 18, true);
 
 
 --
