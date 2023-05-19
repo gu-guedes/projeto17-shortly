@@ -45,3 +45,19 @@ export async function openLinkUrl(req, res){
         res.status(500).send(err.message)
     }
 }
+
+export async function deleteUrl(req, res){
+    const {id} = req.params
+    const { userId } = res.locals.user
+    try{
+        const urlById = await db.query(`SELECT * FROM urls WHERE id = $1;`, [id])
+        if(!urlById.rows[0]) return res.sendStatus(404)
+        const result = await db.query(`SELECT * FROM urls WHERE id = $1 AND "userId" = $2`, [id, userId])
+        if(!result.rows[0]) return res.sendStatus(401)
+        await db.query(`DELETE FROM urls WHERE id = $1;`, [id])
+        res.sendStatus(204)
+
+    }catch(err){
+        res.status(500).send(err.message)
+    }
+}
