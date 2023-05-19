@@ -21,6 +21,38 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: tokens; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.tokens (
+    id integer NOT NULL,
+    "createdAt" timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    "userId" integer,
+    token text NOT NULL
+);
+
+
+--
+-- Name: tokens_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.tokens_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tokens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.tokens_id_seq OWNED BY public.tokens.id;
+
+
+--
 -- Name: urls; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -88,6 +120,13 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: tokens id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tokens ALTER COLUMN id SET DEFAULT nextval('public.tokens_id_seq'::regclass);
+
+
+--
 -- Name: urls id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -102,6 +141,13 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
+-- Data for Name: tokens; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.tokens VALUES (1, '2023-05-19 12:20:43.446501', 3, 'b1e7321c-df12-4ac2-832b-ace07fd957f5');
+
+
+--
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -111,6 +157,16 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.users VALUES (1, 'João', 'joao@driven.com.br', 'driven', '2023-05-19 08:45:20.809875');
+INSERT INTO public.users VALUES (2, 'gu', 'gu@driven.com.br', 'driven', '2023-05-19 08:46:23.363616');
+INSERT INTO public.users VALUES (3, 'gustavo', 'gustavo@driven.com.br', '$2b$10$2FUR8oM7U37Vl7vuBQ.wlezfOe4qD4hpQIdqHe5WqyrzhpQgtAF3K', '2023-05-19 08:57:06.008947');
+
+
+--
+-- Name: tokens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.tokens_id_seq', 1, true);
 
 
 --
@@ -124,7 +180,15 @@ SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_id_seq', 3, true);
+
+
+--
+-- Name: tokens tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tokens
+    ADD CONSTRAINT tokens_pkey PRIMARY KEY (id);
 
 
 --
@@ -157,6 +221,14 @@ ALTER TABLE ONLY public.users
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tokens tokens_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tokens
+    ADD CONSTRAINT "tokens_userId_fkey" FOREIGN KEY ("userId") REFERENCES public.users(id);
 
 
 --
