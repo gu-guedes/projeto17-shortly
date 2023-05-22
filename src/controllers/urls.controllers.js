@@ -64,17 +64,18 @@ export async function deleteUrl(req, res) {
 export async function getUserMe(req, res) {
     const {userId} = res.locals.user
     try {
+        
         const result = await db.query(`
         SELECT
         users.id,
         users.name,
-        SUM(urls."visitCount") AS "visitCount",
+        COALESCE(SUM(urls."visitCount"), 0) AS "visitCount",
         ARRAY_AGG(
           JSON_BUILD_OBJECT(
             'id', urls.id,
             'shortUrl', urls."shortUrl",
             'url', urls.url,
-            'visitCount', urls."visitCount"
+            'visitCount', COALESCE(urls."visitCount", 0)
           )
         ) AS "shortenedUrls"
       FROM
@@ -85,6 +86,18 @@ export async function getUserMe(req, res) {
         users.id = $1
       GROUP BY
         users.id;`, [userId])
+        //console.log(result.rows[0].visitCount)
+        //if(result.rows[0].visitCount === null){
+       //     result.rows[0].visitCount = 0
+       // }
+       // console.log(result.rows[0].shortenedUrls.map(short => {
+        //    if(short.visitCount === null){
+       //         short.visitCount === 0
+        //    }}))
+        //if(result.rows[0].shortenedUrls.visitCount === null){
+            //result.rows[0].shortenedUrls.visitCount === 0
+
+        //}
         res.status(200).send(result.rows[0])
     } catch (err) {
         res.status(500).send(err.message)
