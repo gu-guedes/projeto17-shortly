@@ -39,8 +39,7 @@ export async function openLinkUrl(req, res) {
         await db.query(`UPDATE urls SET "visitCount" = $1 WHERE id = $2`, [updateVisitCount, result.rows[0].id])
 
         res.redirect(result.rows[0].url)
-
-
+        
     } catch (err) {
         res.status(500).send(err.message)
     }
@@ -86,18 +85,7 @@ export async function getUserMe(req, res) {
         users.id = $1
       GROUP BY
         users.id;`, [userId])
-        //console.log(result.rows[0].visitCount)
-        //if(result.rows[0].visitCount === null){
-       //     result.rows[0].visitCount = 0
-       // }
-       // console.log(result.rows[0].shortenedUrls.map(short => {
-        //    if(short.visitCount === null){
-       //         short.visitCount === 0
-        //    }}))
-        //if(result.rows[0].shortenedUrls.visitCount === null){
-            //result.rows[0].shortenedUrls.visitCount === 0
-
-        //}
+      
         res.status(200).send(result.rows[0])
     } catch (err) {
         res.status(500).send(err.message)

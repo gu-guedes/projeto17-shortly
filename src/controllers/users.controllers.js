@@ -1,15 +1,7 @@
 import {db} from "../database/database.config.js"
 import bcrypt from "bcrypt"
 import {v4 as uuid} from "uuid"
-export async function getUsers(req,res){
-try{
-    const resposta = await db.query(`SELECT * FROM users;`)
-    res.send(resposta.rows)
 
-}catch(err){
-    res.status(500).send(err.message)
-}
-}
 export async function signUp(req,res){
     const {name, email, password} = req.body
     try{
